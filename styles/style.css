@@ -1,0 +1,188 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,300,600,400italic);
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-font-smoothing: antialiased;
+    -o-font-smoothing: antialiased;
+    font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    text-align: right; 
+    letter-spacing: 1px;			
+    direction: rtl;
+
+    -moz-user-select: none; 
+    user-select: none;
+}
+
+body{
+    background-image: url(https://png.pngtree.com/thumb_back/fh260/back_our/20190623/ourmid/pngtree-blue-geometric-business-minimalistic-business-card-background-image_237858.jpg);
+    background-size: cover;
+    box-sizing: border-box;
+    /*background-color: #4CAF50;*/
+    font-family: "Roboto", Helvetica, Arial, sans-serif;
+    font-weight: 100;
+    color: #777;
+}
+/*.App > * {
+    background-color: #282c34;
+}*/
+
+/*-----------------------------------------------------------------*/
+/*.container-fluid .navbar-right { direction: ltr; }*/
+.jumbotron {  margin: 4.6% 0 0 0; }
+
+.panel { 
+    /*box-shadow: 5px 10px 15px #666666;*/
+    /*box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);			*/
+    /*box-shadow: 4px 4px 8px gray;*/
+    border: 1px solid silver;
+    background-color: #F9F9F9;
+    margin-top: 2%;
+    padding-top: 0%;
+    border-radius: 0;
+    width: 100%;
+
+    -webkit-box-shadow: 0px 10px 5px #27272780;
+    -moz-box-shadow: 0px 10px 5px #27272780;
+
+}
+
+.panel:hover {
+    box-shadow: 6px 6px 10px black;           
+    border: 1px solid silver;
+}
+
+.panel:focus {
+    border: 1px solid #ff0000;
+    background-color: #F9F9F9;
+}
+
+
+.title {
+    text-shadow: 1px 1px .5px black;
+    font-size: 28.9px;
+    font-weight: bold;
+    margin: auto;
+    padding: 0;
+}
+
+.pageTitle {
+    text-shadow: 1px 1px .5px black;
+    text-decoration: underline;
+    font-weight: bold;
+    font-size: 25px;
+    padding: 0;
+    margin: 0;
+}
+
+.ItemRow > .pageTitle { margin: 1% 1% auto auto; }
+
+img {
+    margin: 0 auto 0 auto;
+}
+
+div.jumbotron > p {
+    width: 60%;
+    margin-top: 2%;
+    margin-right: 1%;
+}
+
+
+.text { height: 105px; }
+
+a { font-size: large; }
+
+a > span { padding-left: 1%; }
+
+
+/*label.fa::before, label.fa { font-size: 15px; }*/
+
+a > i.fa {
+    border-left: 1px solid silver;
+    margin-right: 0;
+    margin-left: 2%;
+    padding-left: 1%;
+    font-size: 15px;
+}
+
+
+hr {
+    padding: 0;
+    margin: 1%;
+    border-top: 0.5px solid silver;
+}
+
+.fa-clock-o {
+    float: right;
+}
+
+.time > span { margin-left: 0; }
+
+.time:hover { text-decoration: none; }
+
+.row > .buttonDiv {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.formInput { margin-bottom: 0.5em; margin-top: 0;}
+
+label { margin: 2% 0 -4% 0; }
+
+.longItem1:nth-child(odd) { padding-right: 0.2em; }
+.longItem1:nth-child(even) { padding-left: 0.3em; }
+
+.longItem:nth-child(odd) { padding-right: 0.3em; }
+.longItem:nth-child(even) { padding-left: 0.3em; }
+
+
+@media screen and (max-width: 700px) {
+    
+    .jumbotron { margin: 21% 0 0 0 }
+
+    div.jumbotron > p {
+        width: 100%;
+    }
+        
+    .row > .pageTitle { 
+        margin: 1% 2% auto auto; 
+        font-size: 175%; 
+    }
+    
+    .searchText { font-size: 150%; }
+    .text { height: 120px; }    
+    .title { font-size: 25px; }
+
+    .navbar-form { width: 80%; }
+
+    .maxWidth, .maxWidth > * {
+        width: 96vw;
+        margin-left: 2vw;
+    }
+   
+}
+
+/*/////////////////////////////////////////////////////////////////////////////*/
+.btn:focus, select:focus { outline: none; }
+
+fieldset {
+    border: 1px groove #ddd !important;
+    padding: 0 1.4em 1.4em 1.4em !important;
+    margin: 0 0 1.5em 0 !important;
+    -webkit-box-shadow:  0px 0px 0px 0px #000;
+            box-shadow:  0px 0px 0px 0px #000;
+}
+
+legend {
+    font-size: 1.2em !important;
+    font-weight: bold !important;
+    text-align: right !important;
+    width:auto;
+    padding:0 10px;
+    border-bottom:none;
+}
