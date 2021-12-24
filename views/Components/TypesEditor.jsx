@@ -16,7 +16,7 @@ export default function TypesEditor(props) {
         setTypes (arr);
     }*/
 
-    const addNewVal = () => {
+    /*const addNewVal = () => {
         //let arr = [...types, { "__v": "0", "_id": "asdasddvssvffdfgdf", gsx$type: newVal}]
         let arr = JSON.parse(JSON.stringify(types));
         arr.push ({ "__v": "0", "_id": "asdasddvssvffdfgdf", gsx$type: newVal});
@@ -35,7 +35,7 @@ export default function TypesEditor(props) {
         setVal (props.types);
         //console.clear();
         console.log ();
-    }
+    }*/
 
     const changeVal = (txt) => {
         setNewVal (txt);
@@ -70,8 +70,7 @@ export default function TypesEditor(props) {
         
         let arr = [...types];
         arr = arr.filter ((e, i) => i != index); 
-        //setTypes(undefined);
-        setVal(arr);
+        setTypes(arr);
         alert ("ערך " + val + " נמחק");
         return true;
     
@@ -99,14 +98,13 @@ export default function TypesEditor(props) {
         let arr = JSON.parse(JSON.stringify(types));
         arr = [...arr];
         arr[index].gsx$type = val;
-        //setTypes(undefined);
         setTypes(arr);
         alert ("הערך עודכן");
         return true;
     
     }
 
-    /*const addNewVal = async (val) => {
+    const addNewVal = async (val) => {
         
         const requestOptions = {
             method: 'post',
@@ -122,19 +120,17 @@ export default function TypesEditor(props) {
             return res;
         }
         
-        let arr = [...types, json];
-        //setTypes(undefined);
-        setTypes(arr);    
+        setTypes([...types, json]);    
+        alert ("הערך " + val + " התווסף לטבלה")
         setNewVal('');
-    }*/
-
-    const setVal = (val) => {
-        let newVal = val.sort((a, b) => a.gsx$type.localeCompare(b.gsx$type))
-        setTypes (newVal);
     }
 
     useEffect(() => {
-        if (types==undefined || types==null) {
+        if (props.err) {
+            setErr (props.err);
+        }
+
+        else if (types==undefined || types==null ) {
             let dbTypes = [
                 { "__v": "0", "_id": "asdasddvssvffdfgdf", gsx$type: "מורה"},
                 { "__v": "0", "_id": "asdasddvssvffdfgdf", gsx$type: "מאבטח"},

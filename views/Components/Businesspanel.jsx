@@ -45,7 +45,7 @@ export default function Businesspanel(props) {
         var obj = {}
         Object.assign(obj, defaultData)        
         setLocalData (obj)
-        setChanged (true);
+        setChanged (false);
     }
     
     const changeVal = (prop, val) => {      

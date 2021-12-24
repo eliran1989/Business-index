@@ -6,9 +6,9 @@ import "../../styles/style.css";
 
 export default function BusinessEditor(props) {
     const [err, setErr] = useState(null)
-    const [cities, setCities] = useState()
+    const [cities, setCities] = useState([])
     const [types, setTypes] = useState([]);
-    const [list, setList] = useState([]);
+    const [list, setList] = useState();
 
     const getCities = () => {
         var url="https://data.gov.il/api/3/action/datastore_search?resource_id=d4901968-dad3-4845-a9b0-a57d027f11ab&limit=2500"
@@ -30,10 +30,6 @@ export default function BusinessEditor(props) {
             (currError) => {
                 console.log (currError);
             });
-    }
-
-    const getTypes = () => {
-        setTypes (props.types.sort((a, b) => a.gsx$type.localeCompare(b.gsx$type)))
     }
 
     const cancelNewBusinessPanel = () => {
@@ -105,7 +101,10 @@ export default function BusinessEditor(props) {
             setErr (props.err);
         }
 
-        else {
+        else if (list==undefined || list==null ) {
+            getCities ();
+            setTypes (props.types.sort((a, b) => a.gsx$type.localeCompare(b.gsx$type)))
+
             var obj = {
                 gsx$new: true,
                 "gsx$type": "61183dfc6a1cf80ca85fbe66",
@@ -124,11 +123,9 @@ export default function BusinessEditor(props) {
                 "gsx$active": true
             }
             //setList([...props.businesses, obj]);
-            //setList(props.businesses);
-            setList([obj]);
+            setList(props.businesses);
+            //setList([obj]);
 
-            getCities ();
-            getTypes ();
         }
 
     }, [])
@@ -156,6 +153,7 @@ export default function BusinessEditor(props) {
         <div className="container-fluid">
             <ul className="nav navbar-nav navbar-right">
                 <li title="דף הבית"><a href="/"><i className="glyphicon glyphicon-home active"></i> דף הבית</a></li>
+                <li title="דף הבית"><a href="/"><i className="glyphicon glyphicon-home active"></i>12</a></li>
             </ul>
             </div>
         </nav>
