@@ -74,7 +74,7 @@ export default function Businesspanel(props) {
     const handleSubmit = async (e) => {
         e.preventDefault();
         (defaultData?.gsx$new == true) ? 
-        saveNewBusiness (): updateBusiness ();
+        addNewBusiness (): updateBusiness ();
     }
 
     const updateBusiness = async (e) => {
@@ -90,8 +90,8 @@ export default function Businesspanel(props) {
         return false;
     }
 
-    const saveNewBusiness = async (e) => {
-        var res = await props.saveNewBusiness(localData);
+    const addNewBusiness = async (e) => {
+        var res = await props.addNewBusiness(localData);
 
         if (res[0]) {
             let data = {};
@@ -207,7 +207,7 @@ export default function Businesspanel(props) {
         <label>כתובת</label>    
             <div className="input-group-sm">
                 <input type="text" className="form-control input-sm" placeholder="כתובת" 
-                value={localData.gsx$address} onChange={e=>changeVal("gsx$address", types[e.target.value])} style={{direction:"rtl"}} />
+                value={localData.gsx$address} onChange={e=>changeVal("gsx$address", e.target.value)} style={{direction:"rtl"}} />
             </div>
         </div>
         
@@ -292,8 +292,7 @@ export default function Businesspanel(props) {
         {
         (defaultData?.gsx$new) ?
         <div className="clearfix" style={{marginTop: "4%"}}>
-        <button type="button" className="btn btn-primary btn-md pull-right" onClick={props.cancel}
-        disabled={!changed}>סגירה</button>    
+        <button type="button" className="btn btn-primary btn-md pull-right" onClick={e=>props.cancel(false)}>סגירה</button>    
         <button type="submit" className="btn btn-warning btn-md pull-left" disabled={!changed}>שמירה</button>    
         </div>:
         

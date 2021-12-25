@@ -6,9 +6,9 @@ import "../../styles/style.css";
 
 export default function BusinessEditor(props) {
     const [err, setErr] = useState(null)
-    const [cities, setCities] = useState([])
+    const [cities, setCities] = useState(null)
     const [types, setTypes] = useState([]);
-    const [list, setList] = useState();
+    const [list, setList] = useState([]);
 
     const getCities = () => {
         var url="https://data.gov.il/api/3/action/datastore_search?resource_id=d4901968-dad3-4845-a9b0-a57d027f11ab&limit=2500"
@@ -32,11 +32,31 @@ export default function BusinessEditor(props) {
             });
     }
 
-    const cancelNewBusinessPanel = () => {
-        if (list[list.length - 1]?.gsx$new == true) {
+    const newBusinessPanel = (val) => {
+        if (val == false && list[list.length - 1]?.gsx$new == true) {
             let arr = [...list];
             arr.pop();
             setList(arr);
+        }
+
+        else if (val == true && list[list.length - 1]?.gsx$new != true) {
+            var obj = {
+                gsx$new: true,
+                "gsx$type": "61183dfc6a1cf80ca85fbe66",
+                "gsx$name": "מיסטר דונאטס",
+                "gsx$logo": "https://res.cloudinary.com/foodies/image/upload/v1624734522/Github/3e654910-26fb-40e7-b7ee-0ec5cee146c4.jpg",
+                "gsx$logoheight": 200,
+                "gsx$logowidth": 200,
+                "gsx$city": "נוף הגליל",
+                "gsx$address": "גלבוע 1", 
+                "gsx$email": "mr.donuts.n@gmail.com",
+                "gsx$phone": "0504488719",
+                "gsx$facebook": "https://www.facebook.com/%D7%9E%D7%99%D7%A1%D7%98%D7%A8-%D7%93%D7%95%D7%A0%D7%90%D7%98%D7%A1-%D7%A1%D7%A0%D7%99%D7%A3-%D7%A0%D7%95%D7%A3-%D7%94%D7%92%D7%9C%D7%99%D7%9C-100366768147503/",
+                "gsx$desc": "חנות קינוחים יוגורט וגלידה",                
+                "gsx$link": "2",
+            }
+            
+            setList ([...list, obj]);
         }
     }
 
@@ -64,13 +84,13 @@ export default function BusinessEditor(props) {
         return true;       
     }
 
-    const saveNewBusiness = async (data) => {
-        
+    const addNewBusiness = async (data) => {        
         delete data.gsx$new
         const dataEntries = Object.entries(data);
         const filtered = dataEntries.filter(([key, value]) => value != undefined && value != null && value);
         data = Object.fromEntries(filtered);
-
+        data.gsx$active = true;
+        data.gsx$link = String(list.length);
         
         const requestOptions = {
             method: 'PUT',
@@ -101,9 +121,7 @@ export default function BusinessEditor(props) {
             setErr (props.err);
         }
 
-        else if (list==undefined || list==null ) {
-            getCities ();
-            setTypes (props.types.sort((a, b) => a.gsx$type.localeCompare(b.gsx$type)))
+        else if (list?.length==0 || cities?.length==0 || types?.length==0) {
 
             var obj = {
                 gsx$new: true,
@@ -126,6 +144,8 @@ export default function BusinessEditor(props) {
             setList(props.businesses);
             //setList([obj]);
 
+            getCities ();
+            setTypes (props.types.sort((a, b) => a.gsx$type.localeCompare(b.gsx$type)))
         }
 
     }, [])
@@ -152,18 +172,23 @@ export default function BusinessEditor(props) {
         <nav className="navbar navbar-inverse" style={{ textAlign: 'left', marginBottom: "0.05%" }}>
         <div className="container-fluid">
             <ul className="nav navbar-nav navbar-right">
-                <li title="דף הבית"><a href="/"><i className="glyphicon glyphicon-home active"></i> דף הבית</a></li>
-                <li title="דף הבית"><a href="/"><i className="glyphicon glyphicon-home active"></i>12</a></li>
+            <li title="עסק חדש"><a href="javascript:void(0)" onClick={e => newBusinessPanel (true) }>עסק חדש</a></li>
+            <li title="דף הבית"><a href="/"><i className="glyphicon glyphicon-home active"></i> דף הבית</a></li>
             </ul>
-            </div>
+        </div>
         </nav>
+        
         <div className="container" style={{ marginTop: '0', paddingTop: '0' }}>
+            <div className="row">
+                <button className="btn" onClick={e => newBusinessPanel(true)}>New Esek</button>
+            </div>
+
             <div className="row">
             {
                 list.map((e,i) => 
                 <Businesspanel key={i} index={i} types={types} business={e} cities={cities}
-                updateBusiness={updateBusiness} saveNewBusiness={saveNewBusiness}
-                cancel={cancelNewBusinessPanel}>
+                updateBusiness={updateBusiness} addNewBusiness={addNewBusiness}
+                cancel={newBusinessPanel}>
                 </Businesspanel>)
             }            
             </div>
