@@ -16,7 +16,7 @@ async function Q (req, res, next, callback) {
   }
   catch (err) {
     //return res.status(404).json(error);
-    return next(err)
+    return next({ message: err })
   }
 }
 

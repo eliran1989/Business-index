@@ -168,7 +168,7 @@ export default function TypesEditor(props) {
             </div>
         </nav>
         <div className="container" style={{ marginTop: '0', paddingTop: '0', textAlign: 'right', direction: 'rtl' }}>
-            <div className="maxWidth col-lg-6 col-md-6 col-lg-offset-3 col-md-offset-3 col-sm-12 col-xs-12"> 
+            <div className="col-lg-6 col-md-6 col-lg-offset-3 col-md-offset-3 col-sm-12 col-xs-12"> 
             <div className="panel panel-info">
                 
                 <div className="panel-heading" style={{paddingTop: ".5em", paddingBottom: ".5em"}}>

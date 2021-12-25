@@ -33,7 +33,8 @@ export default function Itemdata(props) {
       </nav>
 
       <div className="container" style={{ textAlign: 'right', direction: 'rtl' }}>
-        <Item className="maxWidth col-lg-4 col-md-4 col-lg-offset-4 col-md-offset-4 col-sm-12 col-xs-12" data={props.data } ua={props.ua} isLinkable={false} />
+        <Item className="col-lg-4 col-md-4 col-lg-offset-4 col-md-offset-4 col-sm-12 col-xs-12" 
+        data={props.data } ua={props.ua} isLinkable={false} />
       </div>
     </React.Fragment>
   );

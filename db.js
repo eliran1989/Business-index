@@ -48,7 +48,7 @@ function CreateTables () {
 			gsx$logo: { type: String, unique : true },
 			gsx$logoheight: { type: Number, min: 200, max: 500, required : true},
 			gsx$logowidth: { type: Number, min: 200, max: 500, required : true},
-			gsx$address: { type: String, unique : true },
+			gsx$address: { type: String, unique : true, required : false },
 			gsx$city: { type: String, required : true},
 			gsx$phone :  { type: String, required : true},
 			gsx$phone2 :  { type: String, default: undefined },
