@@ -5,7 +5,7 @@ const fetch = require('node-fetch');
 const mongoDB = require('./db.js');
 var Types = mongoDB.Types, Business = mongoDB.Business, db = mongoDB.db;
 
-async function Q (req, res, next, callback) {
+async function fetchDataFromDB (req, res, next, callback) {
   var userAgent = req.headers['user-agent'];     // user-agent header from an HTTP request
   try {
     let val = { };
@@ -46,18 +46,8 @@ async function Q (req, res, next, callback) {
     })
 }*/
 
-router.get('/a1', function(req, res, next) {
-
-  Types.find ({ })
-  .then(data => {
-      res.render("./Components/Q", {types: data});
-  })
-  .catch(err => next ({ message: err}))
-
-})
-
 router.get('/businessEditor', function(req, res, next) {
-  Q (req, res, next, function (val, res) {
+  fetchDataFromDB (req, res, next, function (val, res) {
       res.render("./Components/BusinessEditor", val)
       //res.send ("QW");
   })
@@ -148,21 +138,14 @@ router.put('/deletetype', async function(req, res) {
 
 /*-------------------------------------------------------*/
 router.get('/', function(req, res, next) {
-  Q (req, res, next, function (val, res) {
+  fetchDataFromDB (req, res, next, function (val, res) {
     val.businesses = val.businesses.filter (e => e.gsx$active != false);
     res.render('./Components/HomePage', val);
   })
 })
 
-router.get('/Q', function(req, res, next) {
-  Q (req, res, next, function (val, res) {
-    val.businesses = val.businesses.filter (e => e.gsx$active != false);
-    res.render('./Components/HomePage1', val);
-  })
-})
-
 router.post('/', function(req, res, next) {
-  Q (req, res, next, function (val, res) {
+  fetchDataFromDB (req, res, next, function (val, res) {
     val.businesses = val.businesses.filter (e => e.gsx$active != false);
     res.send(val);
   })
