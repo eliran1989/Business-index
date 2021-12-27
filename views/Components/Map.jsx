@@ -20,6 +20,6 @@ export default function Map() {
       		<>
 		<ReactBingmaps 
 			bingmapKey = "AgGE7oTc0iPUElUa-F4NpzkLZ6tlkuqWzel6S_bEssF0KggqjWafg3AZxeXkwDxl" > 
-		</ReactBingmaps>, <p>{12}</p></>
+		</ReactBingmaps><p>{12}</p></>
 	);
   }
