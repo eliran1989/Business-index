@@ -6,14 +6,20 @@ import "../../styles/App.css";
 import "../../styles/style.css";
 
 export default function Map() {
+	
+     const [didMoutnt, setDidMoutnt] = useState(false)
+	
     useEffect(() => {
+	    
+	setDidMoutn(true);   
         console.log (window);
     }, [])
 
 	return (
-        [
+		didMoutnt &&
+      		<>
 		<ReactBingmaps 
 			bingmapKey = "AgGE7oTc0iPUElUa-F4NpzkLZ6tlkuqWzel6S_bEssF0KggqjWafg3AZxeXkwDxl" > 
-		</ReactBingmaps>, <p>{12}</p>]
+		</ReactBingmaps>, <p>{12}</p></>
 	);
   }
